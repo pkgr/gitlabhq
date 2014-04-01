@@ -1,0 +1,20 @@
+user: git
+group: git
+before_precompile: ./bin/pkgr_before_precompile.sh
+targets:
+  debian-squeeze: &squeeze
+    build_dependencies:
+      - libicu-dev
+    dependencies:
+      - "libicu44 | libicu42"
+      - libpcre3
+      - git-core
+  debian-wheezy: &wheezy
+    build_dependencies:
+      - libicu-dev
+    dependencies:
+      - libicu48
+      - libpcre3
+      - git
+  ubuntu-lucid: *squeeze
+  ubuntu-precise: *wheezy
