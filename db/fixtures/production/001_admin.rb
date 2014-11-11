@@ -10,7 +10,7 @@ admin = User.where(username: "root").first
 
 if admin.nil?
   admin = User.create(
-    email: "admin@example.com",
+    email: ENV.fetch('ADMIN_EMAIL') { "admin@example.com" },
     name: "Administrator",
     username: 'root',
     password: password,
