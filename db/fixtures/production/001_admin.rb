@@ -6,26 +6,29 @@ else
   expire_time = nil
 end
 
-admin = User.create(
-  email: "admin@example.com",
-  name: "Administrator",
-  username: 'root',
-  password: password,
-  password_expires_at: expire_time,
-  theme_id: Gitlab::Theme::MARS
+admin = User.where(username: "root").first
 
-)
+if admin.nil?
+  admin = User.create(
+    email: "admin@example.com",
+    name: "Administrator",
+    username: 'root',
+    password: password,
+    password_expires_at: expire_time,
+    theme_id: Gitlab::Theme::MARS
+  )
 
-admin.projects_limit = 10000
-admin.admin = true
-admin.save!
-admin.confirm!
+  admin.projects_limit = 10000
+  admin.admin = true
+  admin.save!
+  admin.confirm!
 
-if admin.valid?
-puts %Q[
+  if admin.valid?
+    puts %Q[
 Administrator account created:
 
 login.........root
 password......#{password}
 ]
+  end
 end
