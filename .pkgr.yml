@@ -23,7 +23,7 @@ targets:
       - libicu48
       - libpcre3
       - git
-  ubuntu-12.04: *wheezy
+  debian-8: *wheezy
   ubuntu-14.04:
     build_dependencies:
       - libkrb5-dev
