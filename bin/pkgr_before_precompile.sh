@@ -18,3 +18,6 @@ rm config/resque.yml
 
 # Set default unicorn.rb file
 echo "" > config/unicorn.rb
+
+# Set fake .secret file for assets precompilation
+touch .secret

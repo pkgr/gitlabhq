@@ -3,6 +3,8 @@ group: git
 services:
   - postgres
 before_precompile: ./bin/pkgr_before_precompile.sh
+after:
+  - rm .secret
 targets:
   debian-7: &wheezy
     build_dependencies:
